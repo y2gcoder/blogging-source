@@ -11,10 +11,10 @@
 
 ```java
 public interface TaskScheduler {
-	...
+	//...
 	@Nullable
 	ScheduledFuture<?> schedule(Runnable task, Trigger trigger);
-	...
+	//...
 }
 ```
 
@@ -28,7 +28,7 @@ public interface TaskScheduler {
 @SpringBootApplication
 public class ScheduledApplication {
 
-  ...
+  //...
 
 }
 
@@ -41,7 +41,7 @@ public class ScheduledApplication {
 public class Example {
 	@Scheduled(fixedDelay = 1000)
 	public void schedule() {
-          ...
+          //...
 	}
 	
 }
@@ -182,7 +182,7 @@ scheduler2 작업 시작 시간이 schedule1 작업 처리 시간에 영향을 �
 @EnableScheduling
 @SpringBootApplication
 public class ScheduledApplication {
-    ...
+    //...
 }
 ```
 
@@ -205,7 +205,7 @@ public class TestScheduler3 {
 
 비동기 작업을 원하는 스케줄링 메서드에 `@Async` 을 붙여주면? 
 
-```logcatfilter
+```
 2022-11-16 12:54:46.168  INFO 26422 --- [           main] c.b.scheduled.ScheduledApplication       : Started ScheduledApplication in 1.678 seconds (JVM running for 2.253)
 2022-11-16 12:54:47.015  INFO 26422 --- [         task-1] c.b.scheduled.scheduler.TestScheduler3   : schedule1, START, current thread: task-1
 2022-11-16 12:54:48.003  INFO 26422 --- [         task-2] c.b.scheduled.scheduler.TestScheduler3   : schedule1, START, current thread: task-2
@@ -237,7 +237,7 @@ schedule1 작업이 의도했던 주기대로 처리되고 있음을 알 수 있
 
 추가적으로 해당 스케줄링 작업이 있는 애플리케이션 서버를 이중화할 때도 고려해봐야 한다. 프로젝트 당시에는 스케줄링 작업을 해당 프로젝트 서비스의 백엔드 서버에 추가했고, 해당 서버를 이중화해야 하는 상황이었다. 백엔드 서버를 이중화하게 되면 각 서버마다 똑같은 스케줄링 작업이 중복으로 돌아가게 되는 문제가 발생하여, @Profile을 사용하여 원하는 서버 하나에만 스케줄링 작업이 동작하도록 처리해줬다.
 
-이번에 @Scheduled에 대해 공부하고, 테스트를 진행하면서 내가 사용하려던 의도에 맞게 @Scheduled를 사용할 수 있게 되었다고 생각한다. 혹시나 간단하게 스케줄링 작업이 필요해 @Scheduled를 사용하고자 하는 분들도 이 글을 보고 도움을 받으셨으면 좋겠다.
+이번에 @Scheduled에 대해 공부하고, 테스트를 진행하면서 내가 사용하려던 의도에 맞게 @Scheduled를 사용할 수 있게 되었다고 생각한다. 혹시나 간단하게 스케줄링 작업이 필요해 @Scheduled를 사용하고자 하는 분들도 이 글을 보고 도움이 되셨으면 좋겠다.
 
 
 ## References
