@@ -1,0 +1,5 @@
+### 회원 조회
+GET http://localhost:8080/members
+
+### 회원 조회(가입일시 DESC)
+GET http://localhost:8080/members?sort=joined_at,desc
